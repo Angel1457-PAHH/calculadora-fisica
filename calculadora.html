@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora de Electromagnetismo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #d4fcd4; /* verde clarito */
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Pacifico', cursive;
+      font-size: 4em;
+      color: #2e8b57; /* verde medio oscuro */
+      text-shadow: 2px 2px 5px #225533;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: #0077cc;
+      font-size: 2em;
+    }
+
+    section {
+      background: #ffffff;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    section p, section li {
+      font-size: 1.3em;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    fieldset {
+      background: #ffffff;
+      padding: 20px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    legend {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #0077cc;
+    }
+
+    label, input {
+      display: block;
+      margin: 10px 0;
+      font-size: 1.2em;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1.2em;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.2em;
+    }
+
+    p.resultado {
+      font-weight: bold;
+      margin-top: 10px;
+      color: #222;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculadora de Electromagnetismo</h1>
+
+  <section>
+    <h2>¿Cómo usar esta calculadora?</h2>
+    <p>Esta herramienta interactiva está diseñada para ayudarte a entender y aplicar conceptos clave del electromagnetismo. Puedes calcular fácilmente valores como fuerza eléctrica, campo eléctrico, corriente y verificar si se cumple la Ley de Kirchhoff. Solo necesitas ingresar los valores requeridos y pulsar el botón correspondiente. Esta herramienta es ideal para estudiantes de física, ingeniería o carreras técnicas.</p>
+  </section>
+
+  <section>
+    <h2>Ley de Coulomb</h2>
+    <p><strong>Palabras clave:</strong> fuerza eléctrica, cargas, distancia, constante de Coulomb.</p>
+    <p>La Ley de Coulomb describe la <strong>fuerza eléctrica</strong> que existe entre dos cargas puntuales. Esta fuerza puede ser de <strong>atracción o repulsión</strong> dependiendo de los signos de las cargas involucradas. La fórmula que se utiliza es:</p>
+    <p><strong>F = k · (q1 · q2) / r²</strong>, donde:</p>
+    <ul>
+      <li><strong>F</strong>: fuerza eléctrica (Newton)</li>
+      <li><strong>q1</strong> y <strong>q2</strong>: cargas eléctricas en Coulombs</li>
+      <li><strong>r</strong>: distancia entre las cargas en metros</li>
+      <li><strong>k</strong>: constante de Coulomb (9×10⁹ N·m²/C²)</li>
+    </ul>
+    <p>En esta calculadora, deberás ingresar dos cargas (en microcoulombs, μC) y la distancia entre ellas (en metros) para obtener la fuerza.</p>
+    <fieldset>
+      <legend>Calculadora Ley de Coulomb</legend>
+      <label>Carga 1 (μC): <input type="number" id="q1" /></label>
+      <label>Carga 2 (μC): <input type="number" id="q2" /></label>
+      <label>Distancia (m): <input type="number" id="r1" /></label>
+      <button onclick="calcularCoulomb()">Calcular</button>
+      <p id="resultadoCoulomb" class="resultado"></p>
+    </fieldset>
+  </section>
+
+  <section>
+    <h2>Campo Eléctrico</h2>
+    <p><strong>Palabras clave:</strong> campo, intensidad, punto, distancia, carga fuente.</p>
+    <p>El <strong>campo eléctrico</strong> es una región del espacio donde una carga experimenta una fuerza eléctrica. La intensidad del campo depende de la magnitud de la carga que lo origina y de la distancia al punto de observación. La fórmula es:</p>
+    <p><strong>E = k · q / r²</strong></p>
+    <ul>
+      <li><strong>E</strong>: campo eléctrico (N/C)</li>
+      <li><strong>q</strong>: carga generadora del campo</li>
+      <li><strong>r</strong>: distancia al punto donde se mide el campo</li>
+    </ul>
+    <p>En esta sección, deberás ingresar una carga (μC) y la distancia al punto (m) para calcular el valor del campo eléctrico generado.</p>
+    <fieldset>
+      <legend>Calculadora Campo Eléctrico</legend>
+      <label>Carga (μC): <input type="number" id="q3" /></label>
+      <label>Distancia (m): <input type="number" id="r2" /></label>
+      <button onclick="calcularCampo()">Calcular</button>
+      <p id="resultadoCampo" class="resultado"></p>
+    </fieldset>
+  </section>
+
+  <section>
+    <h2>Ley de Ohm</h2>
+    <p><strong>Palabras clave:</strong> voltaje, resistencia, corriente, circuito, intensidad.</p>
+    <p>La <strong>Ley de Ohm</strong> establece una relación directa entre el voltaje aplicado a un circuito y la corriente que fluye a través de él. La fórmula es:</p>
+    <p><strong>I = V / R</strong></p>
+    <ul>
+      <li><strong>I</strong>: corriente eléctrica (A)</li>
+      <li><strong>V</strong>: voltaje (V)</li>
+      <li><strong>R</strong>: resistencia (Ω)</li>
+    </ul>
+    <p>Debes ingresar el valor del voltaje en voltios (V) y la resistencia en ohmios (Ω). La calculadora te dará como resultado la corriente eléctrica que circula en el circuito.</p>
+    <fieldset>
+      <legend>Calculadora Ley de Ohm</legend>
+      <label>Voltaje (V): <input type="number" id="voltaje" /></label>
+      <label>Resistencia (Ω): <input type="number" id="resistencia" /></label>
+      <button onclick="calcularOhm()">Calcular</button>
+      <p id="resultadoOhm" class="resultado"></p>
+    </fieldset>
+  </section>
+
+  <section>
+    <h2>Ley de Corrientes de Kirchhoff</h2>
+    <p><strong>Palabras clave:</strong> nodo, corriente, conservación, suma, circuito.</p>
+    <p>La <strong>Ley de Corrientes de Kirchhoff</strong> afirma que la suma de las corrientes que entran a un nodo es igual a la suma de las que salen. Esto garantiza la <strong>conservación de la carga</strong> eléctrica. Se expresa como:</p>
+    <p><strong>∑I_entrada = ∑I_salida</strong> ó <strong>∑I = 0</strong></p>
+    <p>En la calculadora, deberás ingresar tres valores de corriente. Puedes imaginar que I1 e I2 entran al nodo e I3 sale. El sistema comprobará si la suma neta es cero, validando si se cumple esta ley.</p>
+    <fieldset>
+      <legend>Calculadora Ley de Kirchhoff</legend>
+      <label>Corriente I1 (A): <input type="number" id="i1" /></label>
+      <label>Corriente I2 (A): <input type="number" id="i2" /></label>
+      <label>Corriente I3 (A): <input type="number" id="i3" /></label>
+      <button onclick="calcularKirchhoff()">Verificar</button>
+      <p id="resultadoKirchhoff" class="resultado"></p>
+    </fieldset>
+  </section>
+
+  <script>
+    const k = 9e9;
+
+    function calcularCoulomb() {
+      const q1 = parseFloat(document.getElementById('q1').value) * 1e-6;
+      const q2 = parseFloat(document.getElementById('q2').value) * 1e-6;
+      const r = parseFloat(document.getElementById('r1').value);
+      if (!r || r === 0) return document.getElementById('resultadoCoulomb').innerText = 'Error: distancia no puede ser cero.';
+      const fuerza = k * q1 * q2 / (r * r);
+      document.getElementById('resultadoCoulomb').innerText = `Fuerza eléctrica: ${fuerza.toFixed(3)} N`;
+    }
+
+    function calcularCampo() {
+      const q = parseFloat(document.getElementById('q3').value) * 1e-6;
+      const r = parseFloat(document.getElementById('r2').value);
+      if (!r || r === 0) return document.getElementById('resultadoCampo').innerText = 'Error: distancia no puede ser cero.';
+      const campo = k * q / (r * r);
+      document.getElementById('resultadoCampo').innerText = `Campo eléctrico: ${(campo / 1000).toFixed(3)} kN/C`;
+    }
+
+    function calcularOhm() {
+      const V = parseFloat(document.getElementById('voltaje').value);
+      const R = parseFloat(document.getElementById('resistencia').value);
+      if (!R || R === 0) return document.getElementById('resultadoOhm').innerText = 'Error: resistencia no puede ser cero.';
+      const I = V / R;
+      document.getElementById('resultadoOhm').innerText = `Corriente: ${I.toFixed(3)} A`;
+    }
+
+    function calcularKirchhoff() {
+      const i1 = parseFloat(document.getElementById('i1').value);
+      const i2 = parseFloat(document.getElementById('i2').value);
+      const i3 = parseFloat(document.getElementById('i3').value);
+      const resultado = Math.abs((i1 + i2 - i3)) < 1e-3
+        ? "Se cumple la Ley de Kirchhoff (∑I = 0)"
+        : "No se cumple la Ley de Kirchhoff";
+
+      document.getElementById('resultadoKirchhoff').innerText = resultado;
+    }
+  </script>
+</body>
+</html>
